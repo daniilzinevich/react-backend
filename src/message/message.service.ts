@@ -1,9 +1,9 @@
 import { Model } from 'mongoose';
 import { Injectable, NotFoundException, BadRequestException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Message, MessageDocument } from '../schemas/message.schema';
-import { CreateMessageDto } from '../dto/create-message.dto';
-import { User, UserDocument } from 'src/schemas/user.schema';
+import { Message, MessageDocument } from './message.schema';
+import { CreateMessageDto } from './create-message.dto';
+import { User, UserDocument } from 'src/user/user.schema';
 
 @Injectable()
 export class MessageService {

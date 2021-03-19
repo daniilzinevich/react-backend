@@ -1,7 +1,7 @@
 import { Controller, Get, Param, Put, Body, Post } from '@nestjs/common';
 import { ApiTags,  ApiOkResponse, ApiNotFoundResponse } from '@nestjs/swagger';
 import { MessageService } from './message.service';
-import { Message } from 'src/schemas/message.schema';
+import { Message } from 'src/message/message.schema';
 
 @ApiTags('message')
 @Controller('message')
