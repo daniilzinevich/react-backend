@@ -18,4 +18,41 @@ export class PostService {
     const user = await this.userModel.findById(id).exec();
     return this.postModel.find({ author: user }).exec();
   }
+
+  async findLikedByUser(id): Promise<Array<Post>> {
+    const user = await this.userModel.findById(id).exec();
+    return this.postModel.find({ likes: user }).exec();
+  }
+
+  async likePost(userId, postId) {
+    const user = await this.userModel.findById(userId).exec();
+    const isLiked = await this.postModel.find({ _id: postId, likes: user }).count();
+    if (isLiked) {
+      throw new BadRequestException('Post already liked');
+    } else {
+      const result = await this.postModel.update(
+        { _id: postId },
+        { $push: { likes: userId } }
+      );
+      if (!result.nModified) {
+        throw new NotFoundException('Post not found')
+      }
+    }
+  }
+
+  async unlikePost(userId, postId) {
+    const user = await this.userModel.findById(userId).exec();
+    const isLiked = await this.postModel.find({ _id: postId, likes: user }).count();
+    if (!isLiked) {
+      throw new BadRequestException('Post was not liked');
+    } else {
+      const result = await this.postModel.update(
+        { _id: postId },
+        { $pull: { likes: userId } }
+      ).exec();
+      if (!result.nModified) {
+        throw new NotFoundException('Post was not liked')
+      }
+    }
+  }
 }

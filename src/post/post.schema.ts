@@ -14,6 +14,10 @@ export class Post {
   @ApiProperty()
   @Prop({ type: MGSchema.Types.ObjectId, ref: 'User' })
   author: User;
+
+  @ApiProperty()
+  @Prop({ type: [{ type: MGSchema.Types.ObjectId, ref: 'User' }] })
+  likes: User[];
 }
 
 export const PostSchema = SchemaFactory.createForClass(Post);

@@ -29,7 +29,7 @@ export class UserService {
       const result = await this.userModel.update(
         { _id: id },
         { $push: { friends: friendId } }
-      );
+      ).exec();
       if (!result.nModified) {
         throw new NotFoundException('User not found')
       }
@@ -40,7 +40,7 @@ export class UserService {
     const result = await this.userModel.update(
       { _id: id },
       { $pull: { friends: friendId } }
-    );
+    ).exec();
     if (!result.nModified) {
       throw new NotFoundException('Not a friend')
     }
