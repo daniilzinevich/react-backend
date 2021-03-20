@@ -21,6 +21,10 @@ export class UserService {
     return this.userModel.findById(id).exec();
   }
 
+  async searchUser(name): Promise<User[]> {
+    return this.userModel.find({ name: { $regex: name, $options: "$i" } }).exec();
+  }
+
   async befriend(id, friendId) {
     const isFriend = await this.userModel.find({_id: id, friends: friendId}).count();
     if (isFriend) {

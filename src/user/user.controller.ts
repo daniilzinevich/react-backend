@@ -21,6 +21,12 @@ export class UserController {
     return this.userService.findUser(id);
   }
 
+  @Get('search/:name')
+  @ApiOkResponse({ description: 'Returns a list of users with a similar names.', type: [User]})
+  searchUser(@Param('name') name: string) {
+    return this.userService.searchUser(name);
+  }
+
   @Put()
   @ApiOkResponse({ description: 'Returns an id for new user.'})
   createUser(@Body() createUserDto: CreateUserDto) {
