@@ -12,11 +12,11 @@ export class Message {
   message: string;
 
   @ApiProperty()
-  @Prop({ type: { type: MGSchema.Types.ObjectId, ref: 'User' } })
+  @Prop({ type: MGSchema.Types.ObjectId, ref: 'User' })
   author: User;
 
   @ApiProperty()
-  @Prop({ type: { type: MGSchema.Types.ObjectId, ref: 'User' } })
+  @Prop({ type: MGSchema.Types.ObjectId, ref: 'User' })
   receiver: User;
 }
 

@@ -12,7 +12,7 @@ export class Post {
   message: string;
 
   @ApiProperty()
-  @Prop({ type: { type: MGSchema.Types.ObjectId, ref: 'User' } })
+  @Prop({ type: MGSchema.Types.ObjectId, ref: 'User' })
   author: User;
 }
 
