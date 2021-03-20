@@ -23,7 +23,7 @@ $ npm run start
 
 ## Data scheme
 
-Access http://localhost:3000/api to view available endpoints
+Access http://localhost:5000/api to view available endpoints
 
 ## License
 
