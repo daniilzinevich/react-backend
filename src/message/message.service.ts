@@ -16,6 +16,6 @@ export class MessageService {
 
   async findByUser(id): Promise<Array<Message>> {
     const user = await this.userModel.findById(id).exec();
-    return this.messageModel.find({ receiver: user }).exec();
+    return this.messageModel.find({ receiver: id }).exec();
   }
 }
